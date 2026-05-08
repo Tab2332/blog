@@ -64,7 +64,7 @@
     {
       "binding": "DB",
       "database_name": "blog",
-      "database_id": "dc34f04a-3445-4b5c-bf61-c4ec2328e239",
+      "database_id": "473589c2-fa19-4b76-90df-c6c0bde0d624",
       "migrations_dir": "./src/db/migrations"
     }
   ],
