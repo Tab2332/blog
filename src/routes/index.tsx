@@ -1,5 +1,6 @@
-import { HomePage } from '@/components/blocks/homepage';
+import { PersonalHomePage } from '@/components/blog/personal-home-page';
 import { websiteConfig } from '@/config/website';
+import { getSortedPosts } from '@/lib/blog';
 import { seo } from '@/lib/seo';
 import { getCanonicalUrl } from '@/lib/urls';
 import { createFileRoute } from '@tanstack/react-router';
@@ -28,5 +29,14 @@ export const Route = createFileRoute('/')({
       ],
     };
   },
-  component: HomePage,
+  loader: () => ({
+    featuredPosts: getSortedPosts().slice(0, 3),
+  }),
+  component: HomePageRoute,
 });
+
+function HomePageRoute() {
+  const { featuredPosts } = Route.useLoaderData();
+
+  return <PersonalHomePage featuredPosts={featuredPosts} />;
+}

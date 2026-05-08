@@ -4,6 +4,7 @@ import parse, {
   domToReact,
   Element,
 } from 'html-react-parser';
+import { serifDesign } from '@/components/blog/serif-design';
 import { renderMarkdown, type MarkdownResult } from '@/lib/markdown';
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
@@ -52,7 +53,11 @@ export function Markdown({ content, className }: MarkdownProps) {
               {...domNode.attribs}
               alt={domNode.attribs?.alt ?? ''}
               loading="lazy"
-              className="rounded-lg shadow-md"
+              className="my-8 w-full border border-[var(--serif-border)] object-cover"
+              style={{
+                borderRadius: serifDesign.radius.lg,
+                boxShadow: serifDesign.shadow.sm,
+              }}
             />
           );
         }

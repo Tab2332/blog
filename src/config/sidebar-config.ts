@@ -5,6 +5,7 @@ import {
   IconKey,
   IconLayoutDashboard,
   IconLock,
+  IconPencil,
   IconSettings2,
   IconShieldCheck,
   IconUserCircle,
@@ -27,6 +28,12 @@ export function getSidebarLinks(): MenuItemConfig[] {
       title: m.dashboard,
       icon: IconLayoutDashboard,
       href: Routes.Dashboard,
+      external: false,
+    },
+    {
+      title: 'Write Blog',
+      icon: IconPencil,
+      href: Routes.DashboardWrite,
       external: false,
     },
     {

@@ -39,6 +39,7 @@ export const Routes = {
 
   // Dashboard routes
   Dashboard: '/dashboard',
+  DashboardWrite: '/dashboard/write',
 
   // Settings routes
   Settings: '/settings',

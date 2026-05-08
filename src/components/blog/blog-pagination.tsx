@@ -15,35 +15,35 @@ export function BlogPagination({
 
   return (
     <nav
-      className="mt-8 flex items-center justify-center gap-2"
+      className="mt-14 flex flex-wrap items-center justify-center gap-3"
       aria-label="Blog pagination"
     >
       {currentPage > 1 ? (
         <Link
           to="/blog"
           search={prevPage <= 1 ? { page: undefined } : { page: prevPage }}
-          className="inline-flex items-center rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-muted"
+          className="serif-button serif-button-secondary min-w-[96px] text-sm uppercase tracking-[0.08em]"
         >
           {messages.blog.previous}
         </Link>
       ) : (
-        <span className="inline-flex cursor-not-allowed items-center rounded-lg border border-border px-4 py-2 text-muted-foreground text-sm">
+        <span className="inline-flex min-h-[44px] min-w-[96px] cursor-not-allowed items-center justify-center rounded-md border border-[var(--serif-border)] px-4 py-2 text-sm uppercase tracking-[0.08em] text-[var(--serif-muted-foreground)] opacity-70">
           {messages.blog.previous}
         </span>
       )}
-      <span className="px-2 text-muted-foreground text-sm">
+      <span className="serif-meta rounded-md border border-[var(--serif-border)] bg-[var(--serif-muted)] px-4 py-2">
         {messages.blog.page} {currentPage} {messages.blog.of} {totalPages}
       </span>
       {currentPage < totalPages ? (
         <Link
           to="/blog"
           search={{ page: nextPage }}
-          className="inline-flex items-center rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-muted"
+          className="serif-button serif-button-secondary min-w-[96px] text-sm uppercase tracking-[0.08em]"
         >
           {messages.blog.next}
         </Link>
       ) : (
-        <span className="inline-flex cursor-not-allowed items-center rounded-lg border border-border px-4 py-2 text-muted-foreground text-sm">
+        <span className="inline-flex min-h-[44px] min-w-[96px] cursor-not-allowed items-center justify-center rounded-md border border-[var(--serif-border)] px-4 py-2 text-sm uppercase tracking-[0.08em] text-[var(--serif-muted-foreground)] opacity-70">
           {messages.blog.next}
         </span>
       )}

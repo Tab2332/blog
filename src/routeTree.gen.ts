@@ -28,6 +28,7 @@ import { Route as SettingsNotificationsRouteImport } from './routes/settings/not
 import { Route as SettingsFilesRouteImport } from './routes/settings/files'
 import { Route as SettingsBillingRouteImport } from './routes/settings/billing'
 import { Route as SettingsApikeysRouteImport } from './routes/settings/apikeys'
+import { Route as DashboardWriteRouteImport } from './routes/dashboard/write'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as AuthResetPasswordRouteImport } from './routes/auth/reset-password'
 import { Route as AuthRegisterRouteImport } from './routes/auth/register'
@@ -146,6 +147,11 @@ const SettingsApikeysRoute = SettingsApikeysRouteImport.update({
   id: '/apikeys',
   path: '/apikeys',
   getParentRoute: () => SettingsRoute,
+} as any)
+const DashboardWriteRoute = DashboardWriteRouteImport.update({
+  id: '/write',
+  path: '/write',
+  getParentRoute: () => DashboardRoute,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
@@ -291,6 +297,7 @@ export interface FileRoutesByFullPath {
   '/auth/register': typeof AuthRegisterRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/dashboard/write': typeof DashboardWriteRoute
   '/settings/apikeys': typeof SettingsApikeysRoute
   '/settings/billing': typeof SettingsBillingRoute
   '/settings/files': typeof SettingsFilesRoute
@@ -332,6 +339,7 @@ export interface FileRoutesByTo {
   '/auth/register': typeof AuthRegisterRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/dashboard/write': typeof DashboardWriteRoute
   '/settings/apikeys': typeof SettingsApikeysRoute
   '/settings/billing': typeof SettingsBillingRoute
   '/settings/files': typeof SettingsFilesRoute
@@ -377,6 +385,7 @@ export interface FileRoutesById {
   '/auth/register': typeof AuthRegisterRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/dashboard/write': typeof DashboardWriteRoute
   '/settings/apikeys': typeof SettingsApikeysRoute
   '/settings/billing': typeof SettingsBillingRoute
   '/settings/files': typeof SettingsFilesRoute
@@ -423,6 +432,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/auth/reset-password'
     | '/blog/$slug'
+    | '/dashboard/write'
     | '/settings/apikeys'
     | '/settings/billing'
     | '/settings/files'
@@ -464,6 +474,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/auth/reset-password'
     | '/blog/$slug'
+    | '/dashboard/write'
     | '/settings/apikeys'
     | '/settings/billing'
     | '/settings/files'
@@ -508,6 +519,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/auth/reset-password'
     | '/blog/$slug'
+    | '/dashboard/write'
     | '/settings/apikeys'
     | '/settings/billing'
     | '/settings/files'
@@ -688,6 +700,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/settings/apikeys'
       preLoaderRoute: typeof SettingsApikeysRouteImport
       parentRoute: typeof SettingsRoute
+    }
+    '/dashboard/write': {
+      id: '/dashboard/write'
+      path: '/write'
+      fullPath: '/dashboard/write'
+      preLoaderRoute: typeof DashboardWriteRouteImport
+      parentRoute: typeof DashboardRoute
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -884,10 +903,12 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface DashboardRouteChildren {
+  DashboardWriteRoute: typeof DashboardWriteRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardWriteRoute: DashboardWriteRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 

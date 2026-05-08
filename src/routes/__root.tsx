@@ -15,8 +15,8 @@ import { PromotekitScript } from '@/components/affiliate/promotekit';
 import { Analytics } from '@/components/analytics/analytics';
 import { CrispChat } from '@/components/chatbox/crisp-chat';
 import { ThemeProvider } from '@/components/theme/theme-provider';
-import { Navbar } from '@/components/layout/navbar';
-import { Footer } from '@/components/layout/footer';
+import { BlogNavbar } from '@/components/layout/blog-navbar';
+import { BlogFooter } from '@/components/layout/blog-footer';
 import { DefaultNotFound } from '@/components/layout/default-not-found';
 import { Toaster } from '@/components/shared/toaster';
 import { websiteConfig } from '@/config/website';
@@ -113,12 +113,12 @@ function RootComponent() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar scroll />
+    <div className="serif-site flex min-h-screen flex-col">
+      <BlogNavbar />
       <main id="main-content" className="flex-1">
         <Outlet />
       </main>
-      <Footer />
+      <BlogFooter />
     </div>
   );
 }

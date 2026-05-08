@@ -1,46 +1,44 @@
 import type { BlogPost } from '@/lib/blog';
 import { Link } from '@tanstack/react-router';
 import { formatDate } from '@/lib/formatter';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 
 export function BlogCard({ post }: { post: BlogPost }) {
   const { slug } = post;
 
   return (
-    <Link to="/blog/$slug" params={{ slug }} className="h-full">
-      <Card className="h-full py-0 transition-[box-shadow,ring-color] hover:shadow-md dark:hover:ring-foreground/20">
+    <Link to="/blog/$slug" params={{ slug }} className="group block h-full">
+      <article className="serif-card serif-card-accent serif-card-hover flex h-full flex-col overflow-hidden">
         {post.image && (
-          <div className="aspect-video w-full overflow-hidden rounded-t-xl bg-muted">
+          <div className="aspect-video w-full overflow-hidden border-b border-[var(--serif-border)] bg-[var(--serif-muted)]">
             <img
               src={post.image}
-              alt="blog post"
-              className="size-full object-cover transition-transform hover:scale-[1.05]"
+              alt={post.title}
+              className="size-full object-cover transition-transform duration-200 group-hover:scale-[1.01]"
             />
           </div>
         )}
-        <CardHeader className="flex flex-row items-center justify-between gap-2 pt-4 pb-0">
-          <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground capitalize">
-            {post.category}
+        <div className="flex h-full flex-col p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="serif-meta capitalize">{post.category}</span>
+            <span className="serif-meta">
+              {formatDate(new Date(post.date))}
+            </span>
+          </div>
+          <div className="mt-4 flex-1 space-y-3">
+            <h3 className="line-clamp-2 text-2xl leading-tight transition-colors duration-200 group-hover:text-[var(--serif-accent)]">
+              {post.title}
+            </h3>
+            {post.description && (
+              <p className="line-clamp-3 text-lg leading-relaxed text-[var(--serif-muted-foreground)]">
+                {post.description}
+              </p>
+            )}
+          </div>
+          <span className="serif-link mt-5 inline-flex items-center text-sm font-medium tracking-[0.06em] uppercase">
+            Read Article
           </span>
-          <span className="text-xs text-muted-foreground">
-            {formatDate(new Date(post.date))}
-          </span>
-        </CardHeader>
-        <CardContent className="pb-4">
-          <CardTitle className="line-clamp-2 text-lg">{post.title}</CardTitle>
-          {post.description && (
-            <CardDescription className="mt-2 line-clamp-2">
-              {post.description}
-            </CardDescription>
-          )}
-        </CardContent>
-      </Card>
+        </div>
+      </article>
     </Link>
   );
 }

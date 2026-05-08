@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router';
 import Container from '@/components/layout/container';
 import { Markdown } from '@/components/markdown/markdown';
+import { serifDesign } from '@/components/blog/serif-design';
 import { getPostBySlug } from '@/lib/blog';
 import { websiteConfig } from '@/config/website';
 import { messages } from '@/messages';
@@ -60,45 +61,61 @@ function BlogPostPage() {
   if (!post || !websiteConfig.blog?.enable) throw notFound();
 
   return (
-    <Container className="py-16 px-4">
-      <div className="mx-auto max-w-4xl">
+    <Container className="max-w-5xl px-6 pb-20 pt-12 md:pb-28 md:pt-16">
+      <div className="mx-auto max-w-4xl space-y-6">
         <Link
           to="/blog"
           search={{ page: 1 }}
-          className="mb-6 inline-flex items-center gap-2 text-muted-foreground text-sm hover:text-foreground"
+          className="serif-button serif-button-secondary"
         >
           <IconArrowLeft className="size-4" />
           {messages.blog.allPosts}
         </Link>
 
-        <article>
-          <div className="mb-4 flex flex-wrap items-center gap-2 text-muted-foreground text-sm">
-            <span className="rounded-full bg-muted px-2.5 py-0.5 font-medium capitalize">
-              {post.category}
-            </span>
-            <span>{formatDate(new Date(post.date))}</span>
-          </div>
+        <article className="space-y-10">
+          <header className="space-y-6 border-b border-[var(--serif-border)] pb-10">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="serif-meta capitalize">{post.category}</span>
+              <span className="serif-meta">
+                {formatDate(new Date(post.date))}
+              </span>
+            </div>
 
-          <h1 className="text-3xl font-bold tracking-tight">{post.title}</h1>
+            <h1 className="text-[2.25rem] leading-[1.15] md:text-[3.5rem]">
+              {post.title}
+            </h1>
 
-          {post.description && (
-            <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-              {post.description}
-            </p>
-          )}
+            {post.description && (
+              <p className="max-w-3xl text-lg leading-relaxed text-[var(--serif-muted-foreground)] md:text-2xl">
+                {post.description}
+              </p>
+            )}
 
-          <div className="mt-6 pt-10 border-t border-border">
+            {post.image ? (
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full border border-[var(--serif-border)] object-cover"
+                style={{
+                  borderRadius: serifDesign.radius.lg,
+                  boxShadow: serifDesign.shadow.md,
+                }}
+              />
+            ) : null}
+          </header>
+
+          <div>
             <Markdown
               content={post.content}
-              className="prose prose-neutral dark:prose-invert max-w-none"
+              className="serif-prose prose prose-neutral max-w-none"
             />
           </div>
 
-          <div className="mt-10 pt-6 border-t border-border">
+          <div className="border-t border-[var(--serif-border)] pt-6">
             <Link
               to="/blog"
               search={{ page: 1 }}
-              className="inline-flex items-center gap-2 text-muted-foreground text-sm hover:text-foreground"
+              className="serif-link inline-flex items-center gap-2 text-sm tracking-[0.08em] uppercase"
             >
               <IconArrowLeft className="size-4" />
               {messages.blog.allPosts}
