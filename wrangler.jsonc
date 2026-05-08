@@ -73,7 +73,7 @@
    */
   "r2_buckets": [
     {
-      "bucket_name": "mkfast-template",
+      "bucket_name": "blog",
       "binding": "BUCKET"
     }
   ]
