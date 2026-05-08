@@ -68,11 +68,12 @@ export const websiteConfig: WebsiteConfig = {
     provider: 'affonso',
   },
   mail: {
-    enable: true,
-    provider: 'cloudflare',
-    fromEmail: 'TanStarter <support@tanstarter.dev>',
-    supportEmail: 'TanStarter <support@tanstarter.dev>',
-  },
+  enable: true,
+  provider: 'resend',
+  fromEmail: '你的站点名 <noreply@你的域名.com>',
+  supportEmail: '你的站点名 <support@你的域名.com>',
+}
+,
   newsletter: {
     enable: true,
     provider: 'resend',

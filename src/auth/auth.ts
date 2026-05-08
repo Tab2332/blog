@@ -40,7 +40,7 @@ export const auth = betterAuth({
     // https://discord.com/channels/1300839113142046730/1300839113594769431/1454280549060444393
     enabled: websiteConfig.auth?.enableCredentialLogin ?? false,
     // https://www.better-auth.com/docs/concepts/email#2-require-email-verification
-    requireEmailVerification: true,
+    requireEmailVerification: false,
     // https://www.better-auth.com/docs/authentication/email-password#forget-password
     sendResetPassword: async ({ user, url }) => {
       await sendEmail({
