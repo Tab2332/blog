@@ -1,35 +1,41 @@
 ---
-title: Getting Started
-description: Quick guide to set up and run the TanStarter template.
-date: 2026-02-12
-category: Guide
-image: https://cdn.mksaas.com/tanstarter/template/blog-get-started.jpeg
+title: Cloudflare Workers 部署避坑清单
+description: 这是一份我在真实部署中踩过坑后的最小可行清单，按顺序执行几乎不会翻车。
+date: 2026-05-07
+category: Deployment
+image: https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80
 ---
 
-This post walks you through the basics of running and customizing the TanStarter template.
+这篇给准备上线个人博客的同学，重点是“少走弯路”。
 
-## Prerequisites
+## 1) 先确认三项绑定
 
-1. Node.js 18+
-2. pnpm (or npm / yarn)
+- Worker 脚本
+- D1 数据库
+- R2 存储桶
 
-## Steps
+三者账号必须一致，否则会出现“本地能过、线上报权限错误”的情况。
 
-Install dependencies and run the dev server:
+## 2) 优先排查 `wrangler.jsonc`
+
+最常见问题都在这：
+
+- `database_id` 不匹配  
+- `bucket_name` 不存在  
+- `routes` 指向了不在当前账号下的域名  
+- `logpush: true` 但账号没有对应权限
+
+## 3) 区分构建变量和运行变量
+
+以 `VITE_BASE_URL` 为例，它是构建期变量。  
+如果只配在 runtime variables，页面里还是会出现 `localhost:3000`。
+
+## 4) 上线后立刻做的两个验证
 
 ```bash
-pnpm install
-pnpm dev
+curl -s 'https://你的域名/' | grep localhost
+curl -i 'https://你的域名/api/auth/get-session'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-![img](https://cdn.mksaas.com/tanstarter/template/blog-get-started.jpeg)
-
-Blog posts live in `content/blog/` as Markdown files. The collection is defined in `content-collections.ts` with fields: `title`, `description`, `date`, `category`, `content`, and `image`. The slug is derived from the file path (e.g. `getting-started.md` → `getting-started`).
-
-## Next steps
-
-- Toggle the blog and set pagination in `src/config/website.ts` under `blog.enable` and `blog.paginationSize`.
-- Add more posts under `content/blog/`; they will show up on the blog list and in the route `/blog/$slug`.
-- Customize the layout and blocks in `src/components/blocks/` and `src/routes/` as needed.
+第一条确认 SEO 元标签不再是本地地址；  
+第二条确认鉴权接口能正常返回 `null` 或 session JSON。

@@ -4,10 +4,10 @@
  */
 export const messages = {
   site: {
-    name: 'TanStarter Demo',
-    title: 'TanStarter - Ship Faster with TanStack, Cost Less with Cloudflare',
+    name: 'Xiao Huo Blog',
+    title: 'Xiao Huo Blog - Engineering, Product, and Writing Notes',
     description:
-      'TanStarter is the complete TanStack Start boilerplate for building profitable SaaS, packed with AI, auth, database, storage, blog, email, newsletter, payments, dashboard, SEO, and more, fully deployed on Cloudflare Workers',
+      'A personal editorial-style blog sharing practical engineering logs, product decisions, and weekly reflections.',
   },
 
   nav: {
@@ -22,7 +22,7 @@ export const messages = {
     pages: 'Pages',
     about: {
       title: 'About',
-      description: 'Learn more about us',
+      description: 'Learn more about the writer behind this blog',
     },
     contact: {
       title: 'Contact',
@@ -107,7 +107,7 @@ export const messages = {
   },
 
   footer: {
-    tagline: 'Ship Faster with TanStack, Cost Less with Cloudflare',
+    tagline: 'Less noise, more substance',
     rightsReserved: 'All Rights Reserved',
   },
 
@@ -552,7 +552,7 @@ export const messages = {
 
   blog: {
     title: 'Blog',
-    description: 'Insights, updates and stories from our team',
+    description: 'Long-form notes on engineering, product, and writing',
     noPosts: 'No posts yet',
     allPosts: 'All posts',
     previous: 'Previous',
@@ -563,11 +563,11 @@ export const messages = {
 
   about: {
     title: 'About',
-    description: 'Learn more about our mission and how we can help you',
-    bio: 'We help you build SaaS faster',
+    description: 'A short introduction to me and this writing space',
+    bio: 'Builder · Writer · Learner',
     introduction:
-      '👋 Hi there! This is TanStarter, the complete TanStack Start boilerplate for building profitable SaaS, packed with AI, auth, database, storage, blog, email, newsletter, payments, dashboard, SEO, and more, fully deployed on Cloudflare Workers. If you have any questions, please welcome to contact us for free.',
-    followUs: 'Follow us on X',
+      '👋 Hi, I am Xiao Huo. I use this blog to publish structured, experience-driven notes on engineering practice, product work, and focused learning.',
+    followUs: 'Follow me on X',
     contactUs: 'Contact us',
   },
 

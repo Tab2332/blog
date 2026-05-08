@@ -1,35 +1,31 @@
 ---
-title: Hello World
-description: A simple introduction to the blog and what you can expect.
-date: 2026-02-11
-category: General
-image: https://cdn.mksaas.com/tanstarter/template/blog-hello-world.jpeg
+title: 把模板博客改造成个人写作站
+description: 记录这次重构中最关键的三件事：视觉系统、内容结构和发布流程。
+date: 2026-05-08
+category: Build Log
+image: https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=80
 ---
 
-This is the first post on the blog. You can use **Markdown** here.
+这篇文章记录我把通用模板改造成个人博客的第一轮重构。
 
-## Paragraphs and headings
+## 1) 视觉先统一，再做页面细节
 
-Normal paragraphs are supported. So are lists:
+我先确定了整体风格：衬线字体、较大的留白、弱化装饰。  
+这样做的好处是，后续改导航、卡片、文章页时都能围绕同一套规则，不会越改越乱。
 
-- Item one
-- Item two
-- Item three
+## 2) 让首页、列表页、详情页表达同一件事
 
-The blog is powered by **content-collections**: each post is a Markdown file under `content/blog/` with frontmatter for `title`, `description`, `date`, `category`, and `image`. The template uses `@tailwindcss/typography` for readable prose and applies a dedicated heading font (Bricolage Grotesque) in `src/styles.css`.
+- 首页负责“定位”：我写什么、为什么值得看。  
+- 列表页负责“筛选”：快速判断哪篇该先读。  
+- 详情页负责“沉浸”：减少干扰，让正文成为主角。
 
-## Images and links
+## 3) 写作流程必须可持续
 
-You can add [links](https://example.com) and reference images. Keep the layout simple and readable.
+我给后台加了写作页，用于生成标准 Markdown 草稿。  
+每次写作都遵循统一 frontmatter，发布和维护都轻很多。
 
-![img](https://cdn.mksaas.com/tanstarter/template/blog-hello-world.jpeg)
+## 小结
 
-## Code
+这次改造的目标不是“更花哨”，而是“更耐读”。  
+后面会继续迭代目录结构、封面体系和内容标签。
 
-Inline `code` and blocks are supported. Code blocks use the mono font (Noto Sans Mono) and get a muted background in dark mode. No syntax highlighting by design in this minimal setup.
-
-```bash
-pnpm dev
-```
-
-Thanks for reading.

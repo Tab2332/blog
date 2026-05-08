@@ -1,33 +1,37 @@
 ---
-title: Deploy to Production
-description: How to build and deploy your app to Cloudflare Workers.
-date: 2026-02-13
-category: Guide
-image: https://cdn.mksaas.com/tanstarter/template/blog-deployment.jpeg
+title: 我的每周写作发布流程
+description: 从选题到发布，我目前采用的一套轻量流程：稳定输出，比偶尔爆发更重要。
+date: 2026-05-06
+category: Workflow
+image: https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=80
 ---
 
-Once your app is ready, you can deploy it with a single command.
+我给自己定了一个目标：每周至少发布一篇可复读的文章。
 
-## Build
+## 周一：收集题目
 
-Create an optimized production build:
+把这周遇到的问题先记下来，不求完整，只求不丢。  
+通常来自线上故障、项目复盘、工具链踩坑。
 
-```bash
-pnpm build
-```
+## 周三：完成第一版草稿
 
-The output goes to `dist/` by default. For Cloudflare, the worker entry and assets live under `dist/server/` and `dist/client/`. The build uses the Cloudflare Vite plugin, so the bundle is ready for Workers.
+我会先把结构写出来：
 
-## Deploy to Cloudflare
+- 背景是什么  
+- 问题怎么出现  
+- 我如何定位  
+- 最终方案和取舍
 
-If you use the included Wrangler setup:
+这样文章逻辑会更清楚，读者也更容易复现。
 
-```bash
-pnpm deploy
-```
+## 周五：技术校对 + 上线
 
-This runs `pnpm build` and then `wrangler deploy`. Configure your account and bindings in `wrangler.jsonc`, and set any required environment variables or secrets with `wrangler secret`.
+发布前我只做两件事：
 
-![img](https://cdn.mksaas.com/tanstarter/template/blog-deployment.jpeg)
+1. 把操作步骤写成可执行命令  
+2. 把关键结论写成可复用 checklist
 
-Good luck with your launch.
+## 为什么这套流程有效
+
+它没有复杂工具，也不依赖“灵感时刻”。  
+核心是节奏稳定、表达清晰、结论可复用。

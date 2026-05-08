@@ -68,12 +68,11 @@ export const websiteConfig: WebsiteConfig = {
     provider: 'affonso',
   },
   mail: {
-  enable: true,
-  provider: 'resend',
-  fromEmail: '你的站点名 <noreply@你的域名.com>',
-  supportEmail: '你的站点名 <support@你的域名.com>',
-}
-,
+    enable: true,
+    provider: 'resend',
+    fromEmail: '你的站点名 <noreply@你的域名.com>',
+    supportEmail: '你的站点名 <support@你的域名.com>',
+  },
   newsletter: {
     enable: true,
     provider: 'resend',

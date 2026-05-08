@@ -24,7 +24,7 @@
   "main": "./src/server.ts",
 
   // Enables Workers Trace Events Logpush for a Worker
-  "logpush": true,
+  "logpush": false,
 
   // Whether Wrangler should keep variables configured in the dashboard on deploy
   "keep_vars": true,
@@ -44,7 +44,6 @@
 
   // Custom domains
   // https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
-  
 
   /**
    * Bindings
